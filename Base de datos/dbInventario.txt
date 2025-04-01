@@ -1,0 +1,68 @@
+Base de datos - Actividad Inventario
+Juan Esteban Castañeda Ortiz - :3
+
+CREATE DATABASE IF NOT EXISTS login_register_db2;
+USE login_register_db2;
+drop database login_register_db2;
+create table usuarios(
+id int auto_increment primary key,
+nombre_completo varchar(50),
+correo varchar(50),
+usuario varchar(50),
+contrasena int(50)
+);
+
+create table proveedor(
+idProveedor int auto_increment primary key,
+nombreProveedor varchar(50),
+direccionProveedor varchar(50),
+telefonoProveedor int(15),
+correoProveedor varchar(50)
+);
+
+create table categoria(
+idCategoria int auto_increment primary key,
+nombreCategoria varchar(50),
+descripcionCategoria varchar(100)
+);
+
+create table producto(
+idProducto int auto_increment primary key,
+nombreProducto varchar(50),
+descripcionProducto varchar(100),
+precioProducto int(50),
+cantidadProducto int(20),
+imagenProducto longblob,
+idCategoria int,
+idProveedor int,
+FOREIGN KEY (idCategoria) REFERENCES Categoria(idCategoria),
+FOREIGN KEY (idProveedor) REFERENCES Proveedor(idProveedor)
+);
+
+create table venta(
+idVenta int auto_increment primary key,
+fechaVenta date,
+totalVenta decimal(10,2),
+id int,
+FOREIGN KEY (id) REFERENCES Usuarios(id)
+);
+
+
+create table inventario(
+idInventario int auto_increment primary key,
+cantidadInventario int(20),
+fechaEntrada date,
+fechaSalida date,
+idProducto int,
+FOREIGN KEY (idProducto) REFERENCES Producto(idProducto)
+);
+
+create table detalleVenta(
+idDetalleVenta int auto_increment primary key,
+precioDetalleVenta decimal(10,2),
+cantidadVenta int(50),
+idVenta INT,
+idProducto INT,
+FOREIGN KEY (idVenta) REFERENCES Venta(idVenta),
+FOREIGN KEY (idProducto) REFERENCES Producto(idProducto)
+);

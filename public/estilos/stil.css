@@ -1,0 +1,33 @@
+
+.form-group{
+    margin-bottom: 15px;
+}
+
+label{
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input{
+    width: 90%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+#gif{
+    border-radius: 100%;
+}
+
+#mensaje {
+    background-color: #f2f2f2;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+}
+
+.contenedor1{
+    z-index: 10;
+}
